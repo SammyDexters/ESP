@@ -1,0 +1,16 @@
+---
+
+- hosts: Server #IP Address for the hosts, EC2 instance running on amazon
+  become: true
+  gather_facts: true
+  sudo: yes
+  
+  #tasks for deleteing the html file index.html and unistall the apache server2
+  tasks: 
+  
+    - name: Delete index.html file #task to delete the html file present 
+      file: path=/var/www/html/index.html state=absent
+  
+    - name: uninstall the apache packages that are installed #task to uninstall the apache2 server
+      yum: name=httpd state=absent   
+      

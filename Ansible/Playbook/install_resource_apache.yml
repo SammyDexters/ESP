@@ -1,0 +1,9 @@
+---
+- hosts: Server #IP address for the instance running on EC2 amazon
+  sudo:  yes
+  tasks:
+      - name: install apache2 #install the apache2
+        apt:  name=apache2 update_cache=yes state=latest #update cache and state is latest
+
+      - name: replace index.html file #replace the default index html file with custom hello world file
+        copy: src=/home/saurabh/index.html dest=/var/www/html/index.html
